@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import stibo.seleniumjava.base.BasePage;
-import java.util.Iterator;
 import java.util.Set;
 
 public class HomePage extends BasePage {
@@ -37,11 +36,10 @@ public class HomePage extends BasePage {
         String homePageWindow= driver.getWindowHandle();
         wait.until(ExpectedConditions.visibilityOf(bookDemo)).click();
         Set<String> windowHandles = driver.getWindowHandles();
-        Iterator<String> iterator = windowHandles.iterator();
-        while(iterator.hasNext()){
-            String contactUsWindow= iterator.next();
-            if(!homePageWindow.equalsIgnoreCase(contactUsWindow))
-            driver.switchTo().window(contactUsWindow);
+        for (String contactUsWindow : windowHandles) {
+            if (!homePageWindow.equalsIgnoreCase(contactUsWindow)) {
+                driver.switchTo().window(contactUsWindow);
+            }
         }
     }
 }

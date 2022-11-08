@@ -1,14 +1,12 @@
 package stibo.seleniumjava.pages;
 
 import io.qameta.allure.Step;
-import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import stibo.seleniumjava.base.BasePage;
-import stibo.seleniumjava.utilities.LoadConfig;
 
 public class ContactUsPage extends BasePage {
     //Locators
@@ -40,14 +38,12 @@ public class ContactUsPage extends BasePage {
         return this;
     }
     @Step
-    public ContactUsPage submitDemoRequest(){
+    public void submitDemoRequest(){
         wait.until(ExpectedConditions.visibilityOf(sendButton)).click();
-        return this;
     }
     @Step
     public String getValidationErrorMessageLastName(){
-        String errorMessage=lastNameErrorMessage.getText();
-        return errorMessage;
+        return lastNameErrorMessage.getText();
     }
     @Step
     public void clickStiboSystemsLogo(){
